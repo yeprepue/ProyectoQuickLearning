@@ -1,0 +1,22 @@
+@media (max-width: 1000px) {
+    .derecha {
+     margin-left: 48px;
+    }
+
+    .nombre_participante{
+        font-size:16px
+    }
+
+    .foto_perfil{
+        width: 40px;
+        height: 40px;
+    }
+
+  }
+
+  @media (max-width: 1210px) {
+    .col-lg-12{
+        width:100%;
+    }
+
+  }
