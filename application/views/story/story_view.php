@@ -16,11 +16,11 @@ $this->load->view('template/menu');
                 <form id="formRegisterStory" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Title story</label>
-                        <input type="text" class="form-control" id="storytitle" name="storytitle" required>
+                        <input type="text" class="form-control" id="title" name="title" required>
                     </div>
                     <div class="form-group">
                         <label for="title">Image</label>
-                        <input type="file" class="form-control" id="storyimage" name="storyimage" required>
+                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
                     <div class="form-group">
                         <label for="title">Story</label>
@@ -28,7 +28,7 @@ $this->load->view('template/menu');
                     </div>
                     <div class="form-group">
                         <label for="title">Sede</label>
-                        <select name="storybranch" id="storybranch" class="form-control">
+                        <select name="storybranch" id="sede" name="sede" class="form-control">
                             <option value="">Select branch</option>
                             <option value="">Todos</option>
                             <option value="">Rionegro</option>

@@ -42,22 +42,27 @@ class Story extends CI_Controller
 
     public function registrarNoticia()
     {
-        $title = $this->input->post('storytitle');
+        $title = $this->input->post('image');
         $story = $this->input->post('story');
-        $sede = $this->input->post('sede');
+        $sede = $this->input->post('sede'); 
 
-        $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'gif|jpg|png';
+        // var_dump($_FILES['image']);
+        // exit;
 
-        $this->load->library('upload', $config);
+        $config =[
+        "upload_path" =>  "./assets/images/uploads/",
+        'allowed_types' => 'gif|jpg|png'
+        ];
 
-        if ($this->upload->do_upload('storyimage')) {
+        $this->load->library("upload", $config);
+
+        if ($this->upload->do_upload($_FILES['image']["tmp_name"])) {
             $data = array('upload_data' => $this->upload->data());
-
-            echo json_encode($data);
+            var_dump('OK');
             exit;
         } else {
-            echo $this->upload->display_errors();
+            var_dump('ERROR');
+            //echo $this->upload->display_errors();
             exit;
         }
 
@@ -65,7 +70,7 @@ class Story extends CI_Controller
         // var_dump($title);
         // exit;
 
-        $res = $this->mproducto->registrarNoticia();
+        $res = $this->story_model->registrarNoticia();
         if ($res) {
             echo json_encode(array(
                 "status" => 200,
@@ -80,26 +85,26 @@ class Story extends CI_Controller
 
 
 
-    private function cargarArchivos($config, $nombre)
-    {
+    // private function cargarArchivos($config, $nombre)
+    // {
 
-        $this->load->library("upload", $config);
-        if ($this->upload->do_upload($nombre)) {
+    //     $this->load->library("upload", $config);
+    //     if ($this->upload->do_upload($nombre)) {
 
-            $dataFile = $this->upload->data();
+    //         $dataFile = $this->upload->data();
 
-            return $dataFile['file_name'];
-        } else {
-            $respuesta = array(
-                'code' => 0,
-                'mensaje' => $this->upload->display_errors()
-            );
+    //         return $dataFile['file_name'];
+    //     } else {
+    //         $respuesta = array(
+    //             'code' => 0,
+    //             'mensaje' => $this->upload->display_errors()
+    //         );
 
-            echo json_encode($respuesta);
-            //echo $this->upload->display_errors();
-            return;
-        }
-    }
+    //         echo json_encode($respuesta);
+    //         //echo $this->upload->display_errors();
+    //         return;
+    //     }
+    // }
 }       
 
 /*End of file Teachpal.php*/
